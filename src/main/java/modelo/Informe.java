@@ -14,10 +14,20 @@ public class Informe {
             writer.println("Hora Fin: " + reunion.getHoraFin());
             writer.println("Duracion Total: " + reunion.getDuracionTotal());
             writer.println("Tipo de Reunion: " + reunion.getTipoReunion());
-            writer.println("Enlace o sala de Reunion:");
+
+            if(reunion instanceof ReunionVirtual){
+                ReunionVirtual virtual = (ReunionVirtual) reunion;
+                writer.println("Enlace: " + virtual.getEnlace());
+            }
+
+            if(reunion instanceof ReunionPresencial){
+                ReunionPresencial presencial = (ReunionPresencial) reunion;
+                writer.println("Sala: " + presencial.getSala());
+            }
+
             writer.println("Lista de Participantes:");
             for (Asistencia asistente : reunion.obtenerAsistencias()) {
-                writer.println("- " + asistente.toString()); // Llama al toString de Asistencia/Retraso
+                writer.println("- " + asistente.toString());
             }
             writer.println("Retrasos:");
             for (Retraso r : reunion.obtenerRetrasos()) {
@@ -25,12 +35,12 @@ public class Informe {
             }
             writer.println("Notas:");
             for (Nota n : reunion.obtenerNotas()) {
-                writer.println("- " + n.getContenido()); // Utiliza tu clase Nota
+                writer.println("- " + n.getContenido());
             }
             writer.close();
 
         }
-        catch (Exception e){
+        catch (IOException e){
             e.printStackTrace();
         }
     }

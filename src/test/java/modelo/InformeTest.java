@@ -9,23 +9,32 @@ import java.time.LocalDate;
 
 class InformeTest {
 
+    /**
+     * Verifica que el archivo del informe se genere correctamente
+     */
     @Test
     void testGeneracionArchivo() {
-        Empleado emp = new Empleado("1","Fuentes","Pepe","pepe@udec.cl");
+        Empleado emp = new Empleado("1","Carrasco","Luis","lcarrasco@udec.cl");
         ReunionVirtual reunionPrueba = new ReunionVirtual(LocalDate.now(), Instant.now(), Duration.ofMinutes(60), emp, tipoReunion.TECNICA, "https.skdjojfjsofj");
 
-        reunionPrueba.agregarNota(new Nota("Hola que tal"));
+        reunionPrueba.agregarNota(new Nota("Reunion iniciada"));
 
         reunionPrueba.agregarAsistencia(emp);
 
-        // 2. Ejecutamos tu generador de informe
+        reunionPrueba.iniciar();
+        reunionPrueba.finalizar();
+
+        // Generacion del archivo de informe con los datos de reunionPrueba
+
         Informe generador = new Informe();
         String rutaArchivo = "informe_prueba.txt";
         generador.generarInforme(reunionPrueba, rutaArchivo);
 
-        // 3. Verificamos mediante JUnit que el archivo realmente se creó en el computador
+
         File archivoCreado = new File(rutaArchivo);
-        assertTrue(archivoCreado.exists(), "El archivo .txt debió haberse creado en la raíz.");
+
+        // Si el archivo existe retorna True, de lo contrario retorna False
+        assertTrue(archivoCreado.exists(), "El archivo .txt no se generó correctamente");
 
     }
 }
