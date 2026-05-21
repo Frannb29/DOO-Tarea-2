@@ -8,6 +8,9 @@ public class ReunionPresencial extends Reunion{
         tipoReunion tipo, String sala){
             super(fecha, horaPrevista, duracionPrevista, organizador, tipo);
             this.sala=sala;
-        }
+    }
+    public String getSala(){
+        return sala;
+    }
         
 }
