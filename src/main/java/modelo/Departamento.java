@@ -23,4 +23,13 @@ public class Departamento implements Invitable{
     public void setNombre(String nuevoNombre){
         nombre=nuevoNombre;
     }
+    @Override
+    public String toString() {
+        String texto=nombre+":";
+        for(int i=0;i<listaEmpleados.size();i++){
+            Empleado empleado=listaEmpleados.get(i);
+            texto+=" "+empleado;
+        }
+        return texto;
+    }
 }

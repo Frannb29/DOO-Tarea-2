@@ -12,4 +12,8 @@ public class Invitacion {
     public void setHora(Instant nuevaHora){
         hora=nuevaHora;
     }
+    @Override
+    public String toString(){
+        return "hora: "+hora;
+    }
 }

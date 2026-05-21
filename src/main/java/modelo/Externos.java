@@ -22,4 +22,8 @@ public class Externos implements Invitable{
     public void setCorreo(String nuevoCorreo){
         correo=nuevoCorreo;
     }
+    @Override
+    public String toString() {
+        return nombre + " " + correo;
+    }
 }

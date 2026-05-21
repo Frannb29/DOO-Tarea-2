@@ -38,4 +38,8 @@ public class Empleado implements Invitable{
     public void setCorreo(String nuevoCorreo){
         correo=nuevoCorreo;
     }
+    @Override
+    public String toString(){
+        return nombre+" "+apellidos+" ID:"+id+" "+correo;
+    }
 }
