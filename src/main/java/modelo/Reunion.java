@@ -42,7 +42,7 @@ public abstract class Reunion {
     }
 
     public List<Asistencia> obtenerAsistencias(){
-        return this.asistencias;
+        return asistencias;
     }
 
     public List<Invitable> obtenerAusencias(){
@@ -113,5 +113,43 @@ public abstract class Reunion {
     }
     public tipoReunion getTipoReunion(){
         return tipo;
+    }
+    public Empleado getOrganizador(){
+        return organizador;
+    }
+    public Instant getHoraPrevista(){
+        return horaPrevista;
+    }
+    public Duration getDuracionPrevista(){
+        return duracionPrevista;
+    }
+    public List<Invitacion> getInvitaciones(){
+        return invitaciones;
+    }
+
+    public void setFecha(LocalDate fecha){
+        this.fecha=fecha;
+    }
+    public void setHoraPrevista(Instant horaPrevista){
+        this.horaPrevista=horaPrevista;
+    }
+    public void setDuracionPrevista(Duration duracionPrevista){
+        this.duracionPrevista=duracionPrevista;
+    }
+    public void setOrganizador(Empleado organizador){
+        this.organizador=organizador;
+    }
+    public void setTipo(tipoReunion tipo){
+        this.tipo=tipo;
+    }
+
+    @Override
+    public String toString(){
+        String str="Tipo: "+tipo+"\nFecha: "+fecha+"\nOrganizador: "+organizador+"\nTotal invitados:"+invitaciones.size()+
+        "\nTotal asistencias: "+asistencias.size()+"\n\nNotas:\n";
+        for (Nota nota : notas){
+            str+=nota+"\n";
+        }
+        return str;
     }
 }

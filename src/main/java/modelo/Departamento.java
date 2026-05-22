@@ -1,4 +1,5 @@
 package modelo;
+import java.time.Instant;
 import java.util.ArrayList;
 
 public class Departamento implements Invitable{
@@ -14,9 +15,6 @@ public class Departamento implements Invitable{
     public int obtenerCantidadEmpleados(){
         return listaEmpleados.size();
     }
-    public void invitar(){
-        System.out.println("Invitación a Departamento enviada");
-    }
     public String getNombre(){
         return nombre;
     }
@@ -31,5 +29,10 @@ public class Departamento implements Invitable{
             texto+=" "+empleado;
         }
         return texto;
+    }
+    @Override
+    public Invitacion invitar(Instant hora){
+        System.out.println("Invitación a Departamento enviada");
+        return new Invitacion(hora,this);
     }
 }

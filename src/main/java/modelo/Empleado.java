@@ -1,4 +1,5 @@
 package modelo;
+import java.time.Instant;
 
 public class Empleado implements Invitable{
     private String id;
@@ -10,9 +11,6 @@ public class Empleado implements Invitable{
         this.apellidos=apellidos;
         this.nombre=nombre;
         this.correo=correo;
-    }
-    public void invitar(){
-        System.out.println("Invitación a Empleado enviada");
     }
     public String getId(){
         return id;
@@ -41,5 +39,10 @@ public class Empleado implements Invitable{
     @Override
     public String toString(){
         return nombre+" "+apellidos+" ID:"+id+" "+correo;
+    }
+    @Override
+    public Invitacion invitar(Instant hora){
+        System.out.println("Invitación a Empleado enviada");
+        return new Invitacion(hora,this);
     }
 }

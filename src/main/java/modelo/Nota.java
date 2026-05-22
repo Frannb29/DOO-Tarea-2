@@ -14,6 +14,7 @@ public class Nota {
         this.contenido = contenido;
     }
 
+    @Override
     public String toString(){
         return "Nota: " + contenido;
     }
