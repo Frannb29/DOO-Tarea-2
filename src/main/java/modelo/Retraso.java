@@ -1,5 +1,6 @@
 package modelo;
 import java.time.Instant;
+
 public class Retraso extends Asistencia {
     private Instant horaRetraso;
     public Retraso(Invitable invitable, Instant horaRetraso){
