@@ -1,4 +1,5 @@
 package modelo;
+import java.time.Instant;
 
 public class Externos implements Invitable{
     private String nombre;
@@ -6,9 +7,6 @@ public class Externos implements Invitable{
     public Externos(String nombre,String correo){
         this.nombre=nombre;
         this.correo=correo;
-    }
-    public void invitar(){
-        System.out.println("Invitacion a Externo enviada");
     }
     public String getNombre(){
         return nombre;
@@ -25,5 +23,10 @@ public class Externos implements Invitable{
     @Override
     public String toString() {
         return nombre + " " + correo;
+    }
+    @Override
+    public Invitacion invitar(Instant hora){
+        System.out.println("Invitación a Externo enviada");
+        return new Invitacion(hora,this);
     }
 }

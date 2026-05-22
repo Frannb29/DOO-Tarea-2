@@ -1,5 +1,6 @@
 package modelo;
+import java.time.Instant;
 
 public interface Invitable {
-    public void invitar();
+    public Invitacion invitar(Instant hora);
 }
