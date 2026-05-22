@@ -45,8 +45,21 @@ public abstract class Reunion {
         return this.asistencias;
     }
 
-    public List<Asistencia> obtenerAusencias(){
-        List<Asistencia> ausencias=new ArrayList<>();
+    public List<Invitable> obtenerAusencias(){
+        List<Invitable> ausencias=new ArrayList<>();
+        for (Invitacion invitacion : invitaciones){
+            Invitable invitado = invitacion.getInvitado();
+            boolean asistio = false;
+            for(Asistencia asistencia : asistencias){
+                if(asistencia.getAsistente()==invitado){
+                    asistio = true;
+                    break;
+                }
+            }
+            if(asistio == false){
+                ausencias.add(invitado);
+            }
+        }
         return ausencias;
     }
 
