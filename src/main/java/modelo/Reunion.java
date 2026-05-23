@@ -143,6 +143,12 @@ public abstract class Reunion {
         this.tipo=tipo;
     }
 
+
+    public void generarInforme(String nombreArchivo){
+        Informe informe = new Informe();
+        informe.generarInforme(this, nombreArchivo);
+    }
+
     @Override
     public String toString(){
         String str="Tipo: "+tipo+"\nFecha: "+fecha+"\nOrganizador: "+organizador+"\nTotal invitados:"+invitaciones.size()+
