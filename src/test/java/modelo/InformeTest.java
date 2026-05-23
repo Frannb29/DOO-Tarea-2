@@ -14,10 +14,14 @@ class InformeTest {
      */
     @Test
     void testGeneracionArchivo() {
+
+        //Datos de prueba
+
         Empleado emp = new Empleado("1","Carrasco","Luis","lcarrasco@udec.cl");
-        ReunionVirtual reunionPrueba = new ReunionVirtual(LocalDate.now(), Instant.now(), Duration.ofMinutes(60), emp, tipoReunion.TECNICA, "https.skdjojfjsofj");
+        ReunionVirtual reunionPrueba = new ReunionVirtual(LocalDate.now(), Instant.now(), Duration.ofMinutes(60), emp, tipoReunion.TECNICA, "https://reunionempresa.com/sala-tecnica");
 
         reunionPrueba.agregarNota(new Nota("Reunion iniciada"));
+        reunionPrueba.agregarNota(new Nota("Reunion finalizada"));
 
         reunionPrueba.agregarAsistencia(emp);
 
