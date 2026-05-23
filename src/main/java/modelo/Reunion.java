@@ -233,9 +233,19 @@ public abstract class Reunion {
     public LocalDate getFecha(){
         return fecha;
     }
+    /**
+     * Devuelve la hora de inicio registrada de la reunion.
+     *
+     * @return hora de inicio o null si no inicio
+     */
     public Instant getHoraInicio(){
         return horaInicio;
     }
+    /**
+     * Devuelve la hora de fin registrada de la reunion.
+     *
+     * @return hora de fin o null si no finalizo
+     */
     public Instant getHoraFin(){
         return horaFin;
     }
@@ -247,18 +257,43 @@ public abstract class Reunion {
     public float getDuracionTotal(){
         return calcularTiempoReal();
     }
+    /**
+     * Devuelve el tipo de reunion.
+     *
+     * @return tipo de reunion
+     */
     public tipoReunion getTipoReunion(){
         return tipo;
     }
+    /**
+     * Devuelve el organizador de la reunion.
+     *
+     * @return empleado organizador
+     */
     public Empleado getOrganizador(){
         return organizador;
     }
+    /**
+     * Devuelve la hora prevista de inicio de la reunion.
+     *
+     * @return hora prevista
+     */
     public Instant getHoraPrevista(){
         return horaPrevista;
     }
+    /**
+     * Devuelve la duracion prevista de la reunion.
+     *
+     * @return duracion prevista
+     */
     public Duration getDuracionPrevista(){
         return duracionPrevista;
     }
+    /**
+     * Devuelve la lista de invitaciones de la reunion.
+     *
+     * @return lista de invitaciones
+     */
     public List<Invitacion> getInvitaciones(){
         return invitaciones;
     }
@@ -314,12 +349,11 @@ public abstract class Reunion {
         informe.generarInforme(this, nombreArchivo);
     }
 
-
-    public void generarInforme(String nombreArchivo){
-        Informe informe = new Informe();
-        informe.generarInforme(this, nombreArchivo);
-    }
-
+    /**
+     * Devuelve una representacion de texto resumida de la reunion.
+     *
+     * @return descripcion de la reunion
+     */
     @Override
     public String toString(){
         String str="Tipo: "+tipo+"\nFecha: "+fecha+"\nDatos del organizador:\n"+organizador+"\nTotal invitados: "+invitaciones.size()+
