@@ -1,7 +1,7 @@
 package modelo;
 import java.time.Instant;
 import java.util.ArrayList;
-
+import java.util.Objects;
 /**
  * Clase que representa un departamento como invitado a una reunion.
  */
@@ -15,7 +15,7 @@ public class Departamento implements Invitable{
      */
     public Departamento(String nombre){
         listaEmpleados=new ArrayList<Empleado>();
-        this.nombre=nombre;
+        this.nombre=Objects.requireNonNull(nombre);
     }
     /**
      * Agrega un empleado al departamento.
@@ -47,7 +47,7 @@ public class Departamento implements Invitable{
      * @param nuevoNombre nuevo nombre del departamento
      */
     public void setNombre(String nuevoNombre){
-        nombre=nuevoNombre;
+        this.nombre=Objects.requireNonNull(nuevoNombre);
     }
     /**
      * Devuelve la lista de todos los empleados.

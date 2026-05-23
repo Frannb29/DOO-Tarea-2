@@ -121,7 +121,10 @@ public abstract class Reunion {
             }
         }
 
-        if (horaInicio != null){
+        if(horaFin!=null){
+            System.out.println("La reunion ya termino.");
+        }
+        else if (horaInicio != null){
             asistencias.add(new Retraso(asistente, Instant.now()));
         } else {
             asistencias.add(new Asistencia(asistente));
@@ -299,6 +302,16 @@ public abstract class Reunion {
      */
     public void setTipo(tipoReunion tipo){
         this.tipo=Objects.requireNonNull(tipo);
+    }
+
+    /**
+     * Genera un informe de la reunion.
+     *
+     * @param nombreArchivo nombre del archivo que contiene el informe
+     */
+    public void generarInforme(String nombreArchivo){
+        Informe informe = new Informe();
+        informe.generarInforme(this, nombreArchivo);
     }
 
     @Override

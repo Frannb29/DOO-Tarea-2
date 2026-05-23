@@ -1,5 +1,5 @@
 package modelo;
-
+import java.util.Objects;
 /**
  * Clase que representa una nota o comentario sobre una reunion.
  */
@@ -12,7 +12,7 @@ public class Nota {
      * @param contenido texto de la nota
      */
     public Nota(String contenido){
-        this.contenido=contenido;
+        this.contenido=Objects.requireNonNull(contenido);
     }
 
     /**
@@ -30,7 +30,7 @@ public class Nota {
      * @param contenido nuevo texto de la nota
      */
     public void setContenido(String contenido) {
-        this.contenido = contenido;
+        this.contenido = Objects.requireNonNull(contenido);
     }
 
     /**

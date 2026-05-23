@@ -9,7 +9,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ReunionTest {
+public class TestGeneral {
 
     private static final LocalDate FECHA = LocalDate.of(2026, 5, 23);
     private static final Instant HORA_PREVISTA = Instant.parse("2026-05-23T10:00:00Z");
@@ -33,6 +33,25 @@ public class ReunionTest {
         assertThrows(NullPointerException.class, () -> new TestReunion(FECHA, HORA_PREVISTA, null, ORGANIZADOR, tipoReunion.TECNICA));
         assertThrows(NullPointerException.class, () -> new TestReunion(FECHA, HORA_PREVISTA, DURACION_PREVISTA, null, tipoReunion.TECNICA));
         assertThrows(NullPointerException.class, () -> new TestReunion(FECHA, HORA_PREVISTA, DURACION_PREVISTA, ORGANIZADOR, null));
+    }
+
+    @Test
+    void testEmpleadoRechazaNulls() {
+        assertThrows(NullPointerException.class, () -> new Empleado(null, "Perez", "Sofia", "sperez@gmail.com"));
+        assertThrows(NullPointerException.class, () -> new Empleado("1", null, "Sofia", "sperez@gmail.com"));
+        assertThrows(NullPointerException.class, () -> new Empleado("1", "Perez", null, "sperez@gmail.com"));
+        assertThrows(NullPointerException.class, () -> new Empleado("1", "Perez", "Sofia", null));
+    }
+
+    @Test
+    void testDepartamentoRechazaNullNombre() {
+        assertThrows(NullPointerException.class, () -> new Departamento(null));
+    }
+
+    @Test
+    void testExternosRechazaNulls() {
+        assertThrows(NullPointerException.class, () -> new Externos(null, "diego@externo.com"));
+        assertThrows(NullPointerException.class, () -> new Externos("Diego", null));
     }
 
     @Test
@@ -128,6 +147,40 @@ public class ReunionTest {
 
         assertEquals(1, reunion.getInvitaciones().size());
         assertSame(invitado, reunion.getInvitaciones().get(0).getInvitado());
+    }
+
+    @Test
+    void testInvitarExterno() {
+        Reunion reunion = crearReunion();
+        Externos externo = new Externos("Diego", "diego@hotmail.com");
+
+        reunion.invitar(externo, Instant.parse("2026-05-22T14:00:00Z"));
+
+        assertEquals(1, reunion.getInvitaciones().size());
+        assertSame(externo, reunion.getInvitaciones().get(0).getInvitado());
+    }
+
+    @Test
+    void testInvitarDespuesDeFinalizarNoAgregaInvitacion() {
+        Reunion reunion = crearReunion();
+        Empleado invitado = new Empleado("2", "Sanchez", "Sofia", "ssanchez@gmail.com");
+
+        reunion.finalizar();
+        reunion.invitar(invitado, Instant.parse("2026-05-23T17:00:00Z"));
+
+        assertEquals(0, reunion.getInvitaciones().size());
+    }
+
+    @Test
+    void testAgregarAsistenciaDespuesDeFinalizarNoRegistra() {
+        Reunion reunion = crearReunion();
+        Empleado invitado = new Empleado("2", "Huguez", "Hugo", "hugo@gmail.com");
+
+        reunion.invitar(invitado, Instant.parse("2024-01-01T11:00:00Z"));
+        reunion.finalizar();
+        reunion.agregarAsistencia(invitado);
+
+        assertEquals(0, reunion.obtenerAsistencias().size());
     }
 
     @Test

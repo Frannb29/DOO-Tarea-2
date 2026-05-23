@@ -1,5 +1,6 @@
 package modelo;
 import java.time.Instant;
+import java.util.Objects;
 
 /**
  * Clase que representa un participante externo invitado a una reunion.
@@ -15,8 +16,8 @@ public class Externos implements Invitable{
      * @param correo correo electronico del invitado externo
      */
     public Externos(String nombre,String correo){
-        this.nombre=nombre;
-        this.correo=correo;
+        this.nombre=Objects.requireNonNull(nombre);
+        this.correo=Objects.requireNonNull(correo);
     }
 
     /**
@@ -34,7 +35,7 @@ public class Externos implements Invitable{
      * @param nuevoNombre nuevo nombre
      */
     public void setNombre(String nuevoNombre){
-        nombre=nuevoNombre;
+        this.nombre=Objects.requireNonNull(nuevoNombre);
     }
 
     /**
@@ -52,7 +53,7 @@ public class Externos implements Invitable{
      * @param nuevoCorreo nuevo correo electronico
      */
     public void setCorreo(String nuevoCorreo){
-        correo=nuevoCorreo;
+        this.correo=Objects.requireNonNull(nuevoCorreo);
     }
 
     /**
