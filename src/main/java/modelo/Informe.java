@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.FileWriter;
 
 public class Informe {
+    
     public void generarInforme(Reunion reunion, String nombreArchivo){
         try {
             PrintWriter writer = new PrintWriter(new FileWriter(nombreArchivo));

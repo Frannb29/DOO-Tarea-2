@@ -1,0 +1,11 @@
+Informe de Reunion
+Fecha: 2026-05-23
+Hora Inicio: 2026-05-23T19:00:52.821212800Z
+Hora Fin: 2026-05-23T19:00:52.821212800Z
+Duracion Total: 0.0
+Tipo de Reunion: TECNICA
+Enlace: https.skdjojfjsofj
+Lista de Participantes:
+Retrasos:
+Notas:
+- Reunion iniciada
